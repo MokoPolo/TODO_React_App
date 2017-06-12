@@ -1,27 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
 const title = <div className="jumbotron text-center"><h1>TODOs</h1></div>;
 
-const NewTodo = props => {
-  return (
-    <div>
-      <div className="md-col-10">
-        <input class="form-control" placeholder="Add todo" />
-      </div>
-      <div className="md-col-12">
-        <button id="checkAll" class="btn">Add</button>
-      </div>
-    </div>
-  );
-};
-
 class Todos extends React.Component {
-  //this.props.getNumber
-  // might have to declare the prop to access it
-  // prop is the array of todos
-  // this I can map it to the part that says get milk
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="container">
@@ -29,41 +15,42 @@ class Todos extends React.Component {
           <div className="col-md-3"></div>
           <div className="col-md-6">
             <div className="form-group">
-              <input className="form-control" placeholder="What needs to be done" />
+              <input className="form-control" onKeyPress={(e) => {
+                debugger;
+                if (e.key == "Enter") {
+                  this.props.Listoftodos.push(e.target.target.value)
+                }}
+              } placeholder="What needs to be done" />
             </div>
           </div>
           <div className="col-md-3"></div>
         </div>
-        <div className="row">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
-              <div className="checkbox">
-              <label><input type="checkbox"/>Get milk</label>
-              </div>
+        { this.props.Listoftodos.map((todoItem, i) => 
+          <div className="row">
+            <div className="col-md-3"></div>
+            <div className="col-md-6">
+                <div key={i} className="checkbox">
+                <label><input type="checkbox"/>{todoItem}</label>
+                </div>
+            </div>
+            <div className="col-md-3"></div>
           </div>
-          <div className="col-md-3"></div>
-        </div>
+        )}
       </div>
     );
   }
 }
 
 const App = (props) => {
+  const tasks = ["Get Milk", "Sleep", "Drive to work"];
     return (
       <div>
         {title}
-        <Todos />
+        <Todos Listoftodos={tasks} />
       </div>
     );   
 };
 
-/*class App extends React.Component {
-	render() {
-  	return (
-    	<Todo />
-    );
-  }
-}*/
 
 ReactDOM.render(<App />, document.getElementById('app'));
 
