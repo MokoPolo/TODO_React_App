@@ -6,6 +6,11 @@ const title = <div className="jumbotron text-center"><h1>TODOs</h1></div>;
 class Todos extends React.Component {
   constructor(props) {
     super(props);
+    debugger;
+    this.state = {
+      txtVal: '',
+      listofTodos: props.Listoftodos,
+    };
   }
 
   render() {
@@ -15,17 +20,27 @@ class Todos extends React.Component {
           <div className="col-md-3"></div>
           <div className="col-md-6">
             <div className="form-group">
-              <input className="form-control" onKeyPress={(e) => {
-                debugger;
+              <input id="turns" className="form-control" value={this.state.txtVal} 
+                onChange={(e) => {
+                  debugger
+                  this.setState({txtVal: e.target.value})}}
+                onKeyPress={(e) => {
                 if (e.key == "Enter") {
-                  this.props.Listoftodos.push(e.target.target.value)
+                  debugger;
+
+                  var arrayvar = this.state.listofTodos.slice();
+                  arrayvar.push(this.state.txtVal);
+                  this.setState({ listofTodos: arrayvar })
+
+                  this.state.txtVal = "";
                 }}
               } placeholder="What needs to be done" />
             </div>
           </div>
           <div className="col-md-3"></div>
         </div>
-        { this.props.Listoftodos.map((todoItem, i) => 
+        { 
+          this.state.listofTodos.map((todoItem, i) => 
           <div className="row">
             <div className="col-md-3"></div>
             <div className="col-md-6">
