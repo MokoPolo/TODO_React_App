@@ -1,8 +1,10 @@
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './src/index.js'
+    './src/index.js',
   ],
   module: {
     loaders: [{
@@ -15,9 +17,6 @@ module.exports = {
       exclude: /node_modules/,
       loaders: ['babel-loader', 'eslint-loader']
     },
-    { test: /\.(html)$/,
-      loader: "file?name=[path][name].[ext]&context=./app/static"
-    }
   ]
   },
   resolve: {
@@ -31,5 +30,10 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     hot: true
-  }
+  },
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: './src/index_template.html'
+    })
+  ]
 };

@@ -4,6 +4,7 @@
   "description": "My Minimal React Webpack Babel Setup",
   "main": "index.js",
   "scripts": {
+    "build": "webpack -p ./webpack.config.js",
     "start": "webpack-dev-server --progress --colors --hot --inline --config ./webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -36,6 +37,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "html-webpack-plugin": "^2.28.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
