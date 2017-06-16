@@ -12,7 +12,7 @@ class Todos extends React.Component {
       listofTodos: props.Listoftodos,
     };
   }
-
+//
   render() {
     return (
       <div className="container">
