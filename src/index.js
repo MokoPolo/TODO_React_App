@@ -16,7 +16,7 @@ class Todos extends React.Component {
       this.setState({txtVal: e.target.value})
     };
                 
-  render() {
+  render() {//
     return (
       <div className="container">
         <div className="row">
