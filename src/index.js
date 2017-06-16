@@ -11,7 +11,7 @@ class Todos extends React.Component {
       txtVal: '',
       listofTodos: props.Listoftodos,
     };
-  }
+  }//
 //
   render() {
     return (
