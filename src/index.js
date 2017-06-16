@@ -10,11 +10,6 @@ class Todos extends React.Component {
       txtVal: '',
       listofTodos: props.Listoftodos,
     };
-<<<<<<< HEAD
-  }//
-//
-  render() {
-=======
   }
 
   handleChange = (e) => {
@@ -22,7 +17,6 @@ class Todos extends React.Component {
     };
                 
   render() {//
->>>>>>> 0cb9e94d47100d3ff97c6e60f75ce4de4611ffc4
     return (
       <div className="container">
         <div className="row">
