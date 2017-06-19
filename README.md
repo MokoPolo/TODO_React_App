@@ -8,3 +8,5 @@ My Minimal React Webpack Babel Setup
 
 -create categories ie fruit/meat/dairy etc and have app remember settings to autocomplete
 - be able to enter a recipe and auto load groceries
+- oauth
+- how about the login that can text code to phone?
