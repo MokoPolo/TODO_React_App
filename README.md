@@ -1,3 +1,3 @@
 # MinimalReactBabelSetup
 My Minimal React Webpack Babel Setup
-ss
+-react-router is old. update to newest version and fix
