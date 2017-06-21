@@ -1,18 +1,22 @@
-import ReactDOM from 'react-dom';
-import React from 'react';
-import Todos from './todos';
+// This component handles the App template used on every page.
+import React, {PropTypes} from 'react';
+//import Header from './common/Header';
+//import {connect} from 'react-redux';
 
-
-const title = <div className="jumbotron text-center"><h1>TODOs</h1></div>;
-
-const App = (props) => {
-  const tasks = ["Get Milk", "Sleep", "Drive to work"];
+class App extends React.Component {
+    static get propTypes() { 
+      return { 
+          children: PropTypes.object.isRequired 
+      }; 
+  }
+  render() {
     return (
-      <div>
-        {title}
-        <Todos Listoftodos={tasks} />
+      <div className="container-fluid">
+        {this.props.children}
       </div>
-    );   
-};
+    );
+  }
+}
 
-export default App;
+
+export default (App);
