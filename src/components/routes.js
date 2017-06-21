@@ -8,7 +8,8 @@ import TodoPage from './todo/TodoPage';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
-    <Route path="todo" component={TodoPage} />
-    <Route path="about" component={AboutPage} />
+    <Route path="/todo" component={TodoPage} />
+    <Route path="/about" component={AboutPage} />
+    <Route path='*' component={HomePage} />
   </Route>
 );

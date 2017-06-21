@@ -23,7 +23,10 @@ module.exports = {
   },
   devServer: {
     contentBase: './dist',
-    hot: true
+    inline: true,
+    historyApiFallback: {
+      index: 'index.html'
+    }
   },
   plugins: [
     new HTMLWebpackPlugin({
