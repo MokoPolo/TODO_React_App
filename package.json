@@ -4,8 +4,11 @@
   "description": "My Minimal React Webpack Babel Setup",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -p ./webpack.config.js",
-    "start": "webpack-dev-server --progress --colors --hot --inline --config ./webpack.config.js",
+    "prestart": "babel-node tools/startMessage.js",
+    "start": "npm-run-all --parallel open:src lint:watch",
+    "open:src": "babel-node tools/srcServer.js",
+    "lint": "node_modules/.bin/esw webpack.config.* src tools",
+    "lint:watch": "npm run lint -- --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
