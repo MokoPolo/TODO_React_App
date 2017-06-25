@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import * as todoActions from '../../actions/todoActions';
 
 class Todos extends React.Component {
   static get propTypes() { 
       return { 
-          Listoftodos: PropTypes.array 
+          Listoftodos: PropTypes.array,
+          dispatch: PropTypes.func.isRequired 
       }; 
   }
   constructor(props) {
@@ -24,10 +27,12 @@ class Todos extends React.Component {
 
   handleKeyPress(e) {
     if (e.key == "Enter") {
-      const arrayvar = this.state.listofTodos.slice();
-      arrayvar.push(this.state.txtVal);
-      this.setState({ listofTodos: arrayvar });
-      this.setState({txtVal: ""});
+      //const arrayvar = this.state.listofTodos.slice();
+      //arrayvar.push(this.state.txtVal);
+      //this.setState({ listofTodos: arrayvar });
+      //this.setState({txtVal: ""});
+
+      this.props.dispatch(todoActions.createTodo(this.state.txtVal));
     }
   }
 
@@ -47,7 +52,7 @@ class Todos extends React.Component {
           <div className="col-md-3"/>
         </div>
         { 
-          this.state.listofTodos.map((todoItem, i) => 
+          this.props.Listoftodos.map((todoItem, i) => 
           <div key={i} className="row">
             <div className="col-md-3"/>
             <div className="col-md-6">
@@ -63,4 +68,10 @@ class Todos extends React.Component {
   }
 }
 
-export default Todos;
+
+function mapStateToProps(state, ownProps){
+  return {
+    todos: state.todos
+  };
+}
+export default connect(mapStateToProps)(Todos);

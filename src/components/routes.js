@@ -10,6 +10,6 @@ export default (
     <IndexRoute component={TodoPage} />
     <Route path="/todo" component={TodoPage} />
     <Route path="/about" component={AboutPage} />
-    <Route path='*' component={HomePage} />
+    <Route path="*" component={HomePage} />
   </Route>
 );
