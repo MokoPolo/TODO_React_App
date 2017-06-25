@@ -1,3 +1,5 @@
+import * as types from './actionTypes';
+
 export function createTodo(todo){
-    return {type: 'CREATE_TODO', todo};
+    return {type: types.CREATE_TODO, todo};
 }

@@ -1,6 +1,8 @@
+import * as types from '../actions/actionTypes';
+
 export default function todoReducer(state = [], action){
     switch(action.type){
-        case 'CREATE_TODO':
+        case types.CREATE_TODO:
         return [...state,
             Object.assign({}, action.todo)
         ];
