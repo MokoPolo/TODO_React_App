@@ -2,27 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import * as todoActions from '../../actions/todoActions';
 
 class Todos extends React.Component {
   static get propTypes() { 
       return { 
-          Listoftodos: PropTypes.array,
-          dispatch: PropTypes.func.isRequired 
+          todos: PropTypes.object.isRequired,
       }; 
   }
   constructor(props) {
     super(props);
     this.state = {
-      txtVal: '',
-      listofTodos: props.Listoftodos,
+      todo: { title: "" },
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
   handleChange(e) {
-    this.setState({txtVal: e.target.value});
+    const todo = this.state.todo;
+    todo.title = e.target.value;
+    this.setState( {todo: todo});
   }
 
   handleKeyPress(e) {
@@ -31,11 +32,22 @@ class Todos extends React.Component {
       //arrayvar.push(this.state.txtVal);
       //this.setState({ listofTodos: arrayvar });
       //this.setState({txtVal: ""});
-
-      this.props.dispatch(todoActions.createTodo(this.state.txtVal));
+      this.props.actions.createTodo(this.state.todo)
     }
   }
-
+  todoRow(todoItem, i) {
+    return (
+      <div key={i} className="row">
+        <div className="col-md-3"/>
+        <div className="col-md-6">
+            <div className="checkbox">
+            <label><input type="checkbox"/>{todoItem.title}</label>
+            </div>
+        </div>
+        <div className="col-md-3" />
+      </div>
+    );
+  }
   render() {//
     return (
       <div className="container">
@@ -43,7 +55,7 @@ class Todos extends React.Component {
           <div className="col-md-3"/>
           <div className="col-md-6">
             <div className="form-group">
-              <input id="turns" className="form-control" value={this.state.txtVal} 
+              <input className="form-control" 
                 onChange={this.handleChange}
                 onKeyPress={this.handleKeyPress}
                 placeholder="What needs to be done" />
@@ -51,27 +63,21 @@ class Todos extends React.Component {
           </div>
           <div className="col-md-3"/>
         </div>
-        { 
-          this.props.Listoftodos.map((todoItem, i) => 
-          <div key={i} className="row">
-            <div className="col-md-3"/>
-            <div className="col-md-6">
-                <div className="checkbox">
-                <label><input type="checkbox"/>{todoItem}</label>
-                </div>
-            </div>
-            <div className="col-md-3" />
-          </div>
-        )}
+        {this.props.todos.map(this.todoRow)}
       </div>
     );
   }
 }
-
 
 function mapStateToProps(state, ownProps){
   return {
     todos: state.todos
   };
 }
-export default connect(mapStateToProps)(Todos);
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(todoActions, dispatch)
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);
