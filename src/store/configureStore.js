@@ -4,7 +4,7 @@ import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 
 export default function configureStore(initialState) {
     return createStore(
-        rootReducer,fir lint
+        rootReducer,fffir lint
         initialState,
         applyMiddleware(reduxImmutableStateInvariant())
     );
