@@ -32,7 +32,7 @@ class Todos extends React.Component {
       //arrayvar.push(this.state.txtVal);
       //this.setState({ listofTodos: arrayvar });
       //this.setState({txtVal: ""});
-      this.props.actions.createTodo(this.state.todo)
+      this.props.actions.createTodoooo(this.state.todo)
     }
   }
   todoRow(todoItem, i) {
@@ -63,15 +63,16 @@ class Todos extends React.Component {
           </div>
           <div className="col-md-3"/>
         </div>
-        {this.props.todos.map(this.todoRow)}
+        {this.props.todoList.map(this.todoRow)}
       </div>
     );
   }
 }
 
 function mapStateToProps(state, ownProps){
+  debugger;
   return {
-    todos: state.todos
+    todoList: state.todoseeeeee
   };
 }
 
