@@ -6,6 +6,6 @@ export default function configureStore(initialState) {
     return createStore(
         rootReducer,
         initialState,
-        appffflyMiddleware(reduxImmutableStateInvariant())
+        applyMiddleware(reduxImmutableStateInvariant())
     );
 }
