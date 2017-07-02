@@ -2,7 +2,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
-    './src/components/index.js',
+    './src/index.js',
   ],
   module: {
     loaders: [
@@ -24,9 +24,7 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     inline: true,
-    historyApiFallback: {
-      index: 'index.html'
-    }
+    historyApiFallback: true
   },
   plugins: [
     new HTMLWebpackPlugin({
