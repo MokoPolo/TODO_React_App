@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import { Router, browserHistory } from 'react-router';
-import routes from './components/routes';
+import routes from './routes';
 import {loadTasks} from './actions/todoActions';
 
 const store = configureStore();

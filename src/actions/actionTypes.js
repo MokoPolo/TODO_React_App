@@ -1,2 +1,3 @@
-export const CREATE_TODO = 'CREATE_TASK';
+//export const CREATE_TASK = 'CREATE_TASK';
+export const CREATE_TASK_SUCCESS = 'CREATE_TASK_SUCCESS';
 export const LOAD_TASKS_SUCCESS = 'LOAD_TASK_SUCCESS';

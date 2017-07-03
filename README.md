@@ -13,3 +13,10 @@ My Minimal React Webpack Babel Setup
 3
 - oauth
 - how about the login that can text code to phone?
+
+
+
+Tomorrow
+- redo environment.make broswer popup when do npm start 
+- change to get florescent
+- start recipe part of form

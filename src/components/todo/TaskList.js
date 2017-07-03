@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as taskActions from '../../actions/todoActions';
+import taskListRow from './TaskListRow';
 
 class TaskList extends React.Component {
   static get propTypes() {
       return {
-          taskList: PropTypes.object.isRequired,
+          TaskList: PropTypes.object.isRequired,
           actions: PropTypes.object.isRequired
       };
   }
@@ -22,31 +23,24 @@ class TaskList extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
   handleChange(e) {
+    debugger;
     const task = this.state.task;
-    task.title = e.target.value;
-    this.setState( {task: task});
+    const newTask = Object.assign([], task);
+    newTask.title = e.target.value;
+    this.setState( {task: newTask});
   }
 
   handleKeyPress(e) {
     if (e.key == "Enter") {
-      debugger;
       this.props.actions.createTaskAction(this.state.task);
     }
   }
-  taskRow(taskItem, i) {
-    return (
-      <div key={i} className="row">
-        <div className="col-md-3"/>
-        <div className="col-md-6">
-            <div className="checkbox">
-            <label><input type="checkbox"/>{taskItem.title}</label>
-            </div>
-        </div>
-        <div className="col-md-3" />
-      </div>
-    );
-  }
+
   render() {//
+  //debugger;
+      //const asdfsa = this.props.taskList;
+      const caca = this.props.foo;
+debugger;
     return (
       <div className="container">
         <div className="row">
@@ -61,7 +55,7 @@ class TaskList extends React.Component {
           </div>
           <div className="col-md-3"/>
         </div>
-        {this.props.TaskList.map(this.taskRow)}
+        {this.props.TaskListtt.map(taskListRow)}
       </div>
     );
   }

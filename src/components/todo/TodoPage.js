@@ -16,10 +16,11 @@ class TaskPage extends React.Component {
   }
   render() {
     const tasks = this.props.taskList;
+    debugger;
     return (
       <div>
         {title}
-        <TaskList TaskList={tasks} />
+        <TaskList foo="asd" TaskListtt={tasks} />
       </div>
     );
   }

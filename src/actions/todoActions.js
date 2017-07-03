@@ -2,7 +2,15 @@ import taskApi from '../api/mockTaskApi';
 import * as types from './actionTypes';
 
 export function createTaskAction(task){
-    return {type: 'CREATE_TASK', task};
+  return function(dispatch) {
+    return taskApi.saveTask(task).then(tasks => {
+      dispatch(createTaskActionSuccess(tasks));
+    });
+  };
+}
+
+export function createTaskActionSuccess(tasks){
+    return {type: types.CREATE_TASK_SUCCESS, tasks};
 }
 
 export function loadTasksSuccess(tasks){

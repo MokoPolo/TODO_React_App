@@ -24,8 +24,8 @@ class TaskApi {
 
   static saveTask(task) {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // Do validation here
+       setTimeout(() => {
+         // Do validation here
         const minimumTitleLength = 1;
         if (task.title.length < minimumTitleLength) {
           reject(`Title must be at least ${minimumTitleLength} characters.`);
@@ -33,8 +33,11 @@ class TaskApi {
 
         tasks.push(task);
 
-        resolve(task);
-      }, delay);
+        setTimeout(() => {
+            resolve(Object.assign([], tasks));
+        }, delay);
+
+       });
     });
   }
 }
