@@ -1,9 +1,9 @@
-import taskApi from '../api/mockTaskApi';
+import groceryApi from '../api/mockGroceryApi';
 import * as types from './actionTypes';
 
 export function createGroceryItemAction(task){
   return function(dispatch) {
-    return taskApi.saveTask(task).then(tasks => {
+    return groceryApi.saveGroceryItemave(task).then(tasks => {
       dispatch(createTaskActionSuccess(tasks));
     });
   };
@@ -19,8 +19,8 @@ export function loadGroceryItemsSuccess(tasks){
 
 export function loadGroceryItems() {
   return function(dispatch) {
-    return taskApi.getAllTasks().then(tasks => {
-      dispatch(loadTasksSuccess(tasks));
+    return groceryApi.getAllGroceryItems().then(tasks => {
+      dispatch(loadGroceryItemsSuccess(tasks));
     }).catch(error => {
       throw(error);
     });
