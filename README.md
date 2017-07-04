@@ -1,9 +1,7 @@
 # MinimalReactBabelSetup
 My Minimal React Webpack Babel Setup
-- redo config stuff. hotloading/loaders are funny, try just babel loader, see if preset stage-2 is working
-
 1
-- Integrate with redux
+
 2
 - if i import a css file will it bundle it for me? import './styles/styles.css';
 - maybe page to create lists
@@ -16,9 +14,19 @@ My Minimal React Webpack Babel Setup
 
 
 
-Tomorrow
-- redo environment.make broswer popup when do npm start 
-- change to get florescent
-- start recipe part of form
+
 
 Recipe
+- Create groceryList page
+    - Page will have list of groceries items
+    - Page will also have the list of recipe so that user can add ingredients to grocery list
+
+
+
+- Create RecipeList page
+    - Let user create a recipe
+    - Let user paste recipe in textarea. Each line is a new ingredient
+    - Let user click review button
+    - On review let user check off which items he wants to delete and hit delete button
+    - Show submit button
+    - Code tests as I go along

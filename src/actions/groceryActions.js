@@ -1,0 +1,28 @@
+import taskApi from '../api/mockTaskApi';
+import * as types from './actionTypes';
+
+export function createGroceryItemAction(task){
+  return function(dispatch) {
+    return taskApi.saveTask(task).then(tasks => {
+      dispatch(createTaskActionSuccess(tasks));
+    });
+  };
+}
+
+export function createGroceryItemSuccess(tasks){
+    return {type: types.CREATE_TASK_SUCCESS, tasks};
+}
+
+export function loadGroceryItemsSuccess(tasks){
+    return {type: types.LOAD_TASKS_SUCCESS, tasks};
+}
+
+export function loadGroceryItems() {
+  return function(dispatch) {
+    return taskApi.getAllTasks().then(tasks => {
+      dispatch(loadTasksSuccess(tasks));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}

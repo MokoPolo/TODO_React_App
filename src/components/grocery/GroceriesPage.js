@@ -4,15 +4,14 @@ import TaskList from '../common/TaskList';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as taskActions from '../../actions/todoActions';
-import * as applicationConstants from '../common/constants';
 
-const title = <div className="jumbotron text-center"><h1>Tasks</h1></div>;
+const title = <div className="jumbotron text-center"><h1>Grocery List</h1></div>;
 
-class TaskPage extends React.Component {
+class GroceriesPage extends React.Component {
   static get propTypes() {
       return {
-        taskList: PropTypes.array.isRequired,
-        actions: PropTypes.object.isRequired
+          taskList: PropTypes.array.isRequired,
+          actions: PropTypes.object.isRequired
       };
   }
   render() {
@@ -20,7 +19,7 @@ class TaskPage extends React.Component {
     return (
       <div>
         {title}
-        <TaskList TaskList={tasks} TaskType={applicationConstants.TODO_TYPE} />
+        <TaskList TaskList={tasks} />
       </div>
     );
   }
@@ -38,4 +37,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TaskPage);
+export default connect(mapStateToProps, mapDispatchToProps)(GroceriesPage);
