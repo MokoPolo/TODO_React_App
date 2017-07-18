@@ -15,12 +15,17 @@ class TaskPage extends React.Component {
         actions: PropTypes.object.isRequired
       };
   }
+
+  //constructor(props) {
+  //  super(props);
+  //}
   render() {
+    debugger;
     const tasks = this.props.taskList;
     return (
       <div>
         {title}
-        <TaskList TaskList={tasks} TaskType={applicationConstants.TODO_TYPE} />
+        <TaskList TaskList={tasks} />
       </div>
     );
   }
@@ -39,3 +44,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskPage);
+

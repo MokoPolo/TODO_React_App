@@ -1,6 +1,6 @@
 import delay from './delay';
 
-const tasks = [
+const groceryItems = [
   {
     title: 'Milk',
     location: 'IGA'
@@ -16,28 +16,28 @@ const tasks = [
 ];
 
 
-class TaskApi {
+class GroceryApi {
   static getAllGroceryItems() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(Object.assign([], tasks));
+        resolve(Object.assign([], groceryItems));
       }, delay);
     });
   }
 
-  static saveGroceryItem(task) {
+  static saveGroceryItem(groceryItem) {
     return new Promise((resolve, reject) => {
        setTimeout(() => {
          // Do validation here
         const minimumTitleLength = 1;
-        if (task.title.length < minimumTitleLength) {
+        if (groceryItem.title.length < minimumTitleLength) {
           reject(`Title must be at least ${minimumTitleLength} characters.`);
         }
 
-        tasks.push(task);
+        groceryItems.push(groceryItem);
 
         setTimeout(() => {
-            resolve(Object.assign([], tasks));
+            resolve(Object.assign([], groceryItems));
         }, delay);
 
        });
@@ -45,4 +45,4 @@ class TaskApi {
   }
 }
 
-export default TaskApi;
+export default GroceryApi;

@@ -3,41 +3,40 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as taskActions from '../../actions/todoActions';
-import taskListRow from './TaskListRow';
+import * as groceryActions from '../../actions/groceryActions';
+import groceryListRow from './GroceryListRow';
 import * as applicationConstants from './constants';
 
-class TaskList extends React.Component {
+class GroceryList extends React.Component {
   static get propTypes() {
     return {
-      TaskList: PropTypes.object.isRequired,
+      GroceryList: PropTypes.object.isRequired,
       actions: PropTypes.object.isRequired
     };
   }
   constructor(props) {
-    debugger;
     super(props);
     this.state = {
-      task: { title: "" },
+      groceryItem: { title: "" },
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
   handleChange(e) {
-    const task = this.state.task;
-    const newTask = Object.assign([], task);
-    newTask.title = e.target.value;
-    this.setState({ task: newTask });
+    const groceryItem = this.state.groceryItem;
+    const newGroceryItem = Object.assign([], groceryItem);
+    newGroceryItem.title = e.target.value;
+    this.setState({ groceryItem: newGroceryItem });
   }
 
   handleKeyPress(e) {
     if (e.key == "Enter") {
-      this.props.actions.createTaskAction(this.state.task);
+      this.props.actions.createGroceryAction(this.state.groceryItem);
     }
   }
 
-  render() {//
+  render() {
     return (
       <div className="container">
         <div className="row">
